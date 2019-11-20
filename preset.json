@@ -1,0 +1,44 @@
+{
+  "plugins": {
+    "@vue/cli-plugin-babel": {
+      "version": "^3.10.0"
+    },
+    "vue-cli-plugin-ljx-test": {
+      "version": "^1.0.71",
+      "prompts": true,
+
+      "tinifyKey": "",
+
+      "ticketUrl": "",
+
+      "devApi": "",
+      "prodServiceUrl": "",
+      "prodResourcePath": "",
+      "sitServiceUrl": "",
+      "sitResourcePath": "",
+
+      "isSeparation": 0,
+      "isIndexHtml": 1,
+
+      "sitWebConfig": {
+        "ssh": {
+          "host": "",
+          "port": 0,
+          "username": "",
+          "password": ""
+        },
+        "remotePath": ""
+      },
+      "cdnConfig": {
+        "ssh": {
+          "host": "",
+          "port": 0,
+          "username": "",
+          "passphrase": "",
+          "privateKey": ""
+        },
+        "remotePath": ""
+      } 
+    }
+  }
+}

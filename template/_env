@@ -1,0 +1,14 @@
+# default
+VUE_APP_VCONSOLE = 0
+
+VUE_APP_MOCK = 0
+
+# 页面是1:html还是0:jsp
+VUE_APP_ISINDEXHTML = <%= isIndexHtml %>
+
+# 项目是否前后端分离开发：1是 0否
+# 若为0则忽略环境配置文件的VUE_APP_SERVICE_API
+VUE_APP_ISSEPARATION = <%= isSeparation %>
+
+# jsapi_ticket
+VUE_APP_TICKETURL = <%= ticketUrl %>

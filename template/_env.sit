@@ -1,0 +1,9 @@
+NODE_ENV = production
+
+VUE_APP_SERVICE_API = <%= sitServiceUrl %>
+
+VUE_APP_RESOURCE_URL = <%= sitResourcePath %>
+
+VUE_APP_VCONSOLE = 1
+
+VUE_APP_MOCK = 0

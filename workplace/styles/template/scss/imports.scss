@@ -1,0 +1,96 @@
+@mixin shsc-r { font-family: SourceHanSansCN-Regular; }
+@mixin shsc-b { font-family: SourceHanSansCN-Bold; }
+@mixin shsc-l { font-family: SourceHanSansCN-Light; }
+@mixin shsc-m { font-family: SourceHanSansCN-Medium; }
+@mixin shsc-h { font-family: SourceHanSansCN-Heavy; }
+
+@mixin absolute-vertical-center {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+@mixin absolute-align-center {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin sc($fs, $color: #000000) {
+  font-size: $fs;
+  color: $color;
+}
+
+@mixin wh($w, $h) {
+  width: $w * .01rem;
+  height: $h * .01rem;
+}
+
+@mixin btn-blow {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: -.1rem;
+    bottom: -.1rem;
+    left: -.1rem;
+    right: -.1rem;
+  }
+}
+
+@mixin btn-scale($iscenter: false) {
+  position: relative;
+  &:active {
+    transition: transform .2s;
+    transform: scale(.97);
+    @if $iscenter { transform: translateX(-50%) scale(.97); }
+    @else { transform: scale(.97); }
+  }
+}
+
+@mixin btn-blow-scale($iscenter: false) {
+  @include btn-scale($iscenter);
+  @include btn-blow;
+}
+
+@mixin max-line($line: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+}
+
+// 背景图
+@mixin base-background($bg, $bgheight: null) {
+  background-image: url($bg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  @if $bgheight != null { height: $bgheight * .01rem; }
+  position: relative;
+  overflow: hidden;
+}
+
+// 图片
+@mixin base-image($bg, $imgwidth, $imgheight) {
+  display: inline-block;
+  background-image: url($bg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: $imgwidth * .01rem;
+  height: $imgheight * .01rem;
+}

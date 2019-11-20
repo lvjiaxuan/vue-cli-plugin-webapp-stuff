@@ -1,0 +1,67 @@
+/* keep */
+<%_ if(adaptionSize) { %>
+@import './<%= adaptionSize %>';
+<%_ } %>
+
+// ==================================
+// common ===========================
+// ==================================
+
+@font-face {
+  font-family: SourceHanSansCN-Bold;
+  src: url('@/assets/fonts/SourceHanSansCN-Bold.ttf');
+}
+
+@font-face {
+  font-family: SourceHanSansCN-Heavy;
+  src: url('@/assets/fonts/SourceHanSansCN-Heavy.ttf');
+}
+
+@font-face {
+  font-family: SourceHanSansCN-Medium;
+  src: url('@/assets/fonts/SourceHanSansCN-Medium.ttf');
+}
+
+@font-face {
+  font-family: SourceHanSansCN-Regular;
+  src: url('@/assets/fonts/SourceHanSansCN-Regular.ttf');
+}
+
+.body-fixed {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.popup-fade-enter, .popup-fade-leave-active {
+  opacity: 0;
+  transform: scale(.1);
+}
+
+.popup-fade-enter-active, .popup-fade-leave-active {
+  transition: all 0.28s;
+}
+
+// ==================================
+// utils ============================
+// ==================================
+
+.hide-dom { display: none !important; }
+.text-break { white-space: pre-wrap; word-break: break-all; }
+.overflow-ellipsis { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.shsc-r { font-family: SourceHanSansCN-Regular; }
+.shsc-b { font-family: SourceHanSansCN-Bold; }
+.shsc-l { font-family: SourceHanSansCN-Light; }
+.shsc-m { font-family: SourceHanSansCN-Medium; }
+.shsc-h { font-family: SourceHanSansCN-Heavy; }
+
+// ==================================
+// reset ============================
+// ==================================
+
+p { margin: 0; padding: 0; }
+img, video { object-fit: cover; }
+*:not(input) { user-select: none; }
+img[src=''], video[src=''] { display: none; }
+input { border: none; background-color: transparent; box-sizing: border-box; }
+button { border: none; background: none; padding: 0; display: flex; justify-content: center; align-items: center; }
