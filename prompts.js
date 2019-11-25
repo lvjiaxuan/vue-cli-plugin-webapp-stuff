@@ -22,14 +22,14 @@ module.exports = [
 
   {
     name: 'adaptionType',
-    message: '请选择适配方案（默认dpr=2）',
+    message: '请选择适配方案',
     type: 'list',
     default: 'rem',
     choices: [{
       name: 'rem布局',
       value: 'rem'
     }, {
-      name: 'vw方法（postcss-px-to-viewport）',
+      name: 'vw方式（postcss-px-to-viewport）',
       value: 'vw'
     }]
   },
@@ -45,7 +45,22 @@ module.exports = [
     }, {
       name: '640px',
       value: 640,
+    }, {
+      name: '输入',
+      value: 0
     }]
+  },
+
+  {
+    name: 'inputAdaptionSize',
+    message: '请输入设计图分辨率',
+    type: 'input',
+    validate(value) {
+      return +value >= 320 ? true : '至少大于320px';
+    },
+    when({ adaptionSize }) {
+      return adaptionSize === 0;
+    }
   },
 
   {

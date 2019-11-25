@@ -84,7 +84,7 @@ const deployindex = async (mode = 'sit') => {
   if(!isIndexHtml) {
 
     const idnexStr = await readFile(resolve('./dist/index.html'));
-    let jspStr = '<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>' + idnexStr.toString();
+    let jspStr = '<<%%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"<%%>' + idnexStr.toString();
     jspStr = jspStr.replace(/\.css/g, '.css?v=${version}').replace(/\.js/g, '.js?v=${version}');// 版本控制方式
     await writeFile(resolve('./dist/index.jsp'), jspStr);
   }

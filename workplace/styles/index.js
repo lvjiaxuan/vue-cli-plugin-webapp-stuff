@@ -1,13 +1,24 @@
 module.exports = (api, options) => {
 
-  const { cssPreprocessor, adaptionSize, adaptionType } = options;
+  const adaptionSize = options.inputAdaptionSize ? options.inputAdaptionSize: options.adaptionSize;
+  const {
+    cssPreprocessor,
+    // adaptionSize,
+    adaptionType
+  } = options;
+
+  api.extendPackage({
+    dependencies: {
+      'normalize.css': '^8.0.1',
+    }
+  });
 
   /**
    * css预处理器
    */
   if (cssPreprocessor !== 'css') {
 
-    const deps = {
+    const devDependencies = {
       scss: {
         sass: '^1.19.0',
         'sass-loader': '^7.1.0'
@@ -24,31 +35,22 @@ module.exports = (api, options) => {
 
     api.extendPackage({
       devDependencies: {
-        ...deps[cssPreprocessor],
-        'style-resources-loader': '^1.2.1'
-      },
-      vue: {
-        pluginOptions: {
-          'style-resources-loader': {
-            preProcessor: cssPreprocessor,
-            patterns: ['./src/styles/imports.' + cssPreprocessor]
-          }
-        }
+        ...devDependencies[cssPreprocessor],
+        'style-resources-loader': '^1.3.2'
       }
     });
   }
 
   /**
-   * 页面适配尺寸
+   * 页面适配文件
    */
+  api.render({ [`src/styles/index.${ cssPreprocessor }`]: `./template/${ cssPreprocessor }/index.${ cssPreprocessor }` }, { adaptionType, adaptionSize });
   if(adaptionType === 'rem') {
 
-    api.render({ [`src/styles/index.${ cssPreprocessor }`]: `./template/${ cssPreprocessor }/index.${ cssPreprocessor }` }, { adaptionSize });
     api.render({ [`src/styles/imports.${ cssPreprocessor }`]: `./template/${ cssPreprocessor }/imports.${ cssPreprocessor }` });
-    api.render({ [`src/styles/${ adaptionSize }.css`]: `./template/${ adaptionSize }.css` });
+    api.render({ [`src/styles/adaption-${ adaptionSize }.css`]: `./template/adaption.css` }, { adaptionSize });
   } else if(adaptionType === 'vw') {
 
-    api.render({ [`src/styles/index.${ cssPreprocessor }`]: `./template/${ cssPreprocessor }/index.${ cssPreprocessor }` }, { adaptionSize: false });
     api.extendPackage({
       devDependencies: {
         'postcss-px-to-viewport': '^1.1.1'

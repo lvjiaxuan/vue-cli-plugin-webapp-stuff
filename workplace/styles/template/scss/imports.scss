@@ -75,22 +75,22 @@
 }
 
 // 背景图
-@mixin base-background($bg, $bgheight: null) {
-  background-image: url($bg);
+@mixin base-background($url, $height: null) {
+  @if $height != null { height: $height * .01rem; }
+  background-image: url($url);
   background-size: 100%;
   background-repeat: no-repeat;
   width: 100%;
-  @if $bgheight != null { height: $bgheight * .01rem; }
   position: relative;
   overflow: hidden;
 }
 
 // 图片
-@mixin base-image($bg, $imgwidth, $imgheight) {
+@mixin base-image($url, $width, $height) {
   display: inline-block;
-  background-image: url($bg);
+  background-image: url($url);
   background-size: 100%;
   background-repeat: no-repeat;
-  width: $imgwidth * .01rem;
-  height: $imgheight * .01rem;
+  width: $width * .01rem;
+  height: $height * .01rem;
 }

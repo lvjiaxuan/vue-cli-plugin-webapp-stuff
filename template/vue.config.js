@@ -44,6 +44,18 @@ module.exports = {
 
   chainWebpack(config) {
 
+    <%_ if(cssPreprocessor !== 'css') { %>
+    /**
+     * 样式自动化导入
+     */
+    ;['normal', 'normal-modules', 'vue', 'vue-modules'].forEach(type => {
+      config.module.rule('<%= cssPreprocessor %>').oneOf(type)
+        .use('style-resources-loader')
+          .loader('style-resources-loader')
+          .options({ patterns: [path.resolve(__dirname, './src/styles/imports.<%= cssPreprocessor %>')] })
+    })
+    <%_ } %>
+
     /**
      * 依赖图分析
      */

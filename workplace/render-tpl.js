@@ -2,6 +2,9 @@ const pluginName = require('./../package.json').name;
 
 module.exports = (api, options, rootOptions) => {
 
+  /**
+   * 来自 preset.json
+   */
   const defaultSetting = {
     [pluginName]: {
       tinifyKey: 'tinifyKey',
@@ -63,11 +66,12 @@ module.exports = (api, options, rootOptions) => {
     cdnConfig,
   } = rootOptions.plugins[pluginName];
 
-  const {
+  const adaptionSize = options.inputAdaptionSize ? options.inputAdaptionSize: options.adaptionSize;
+  const {// prompts
     cssPreprocessor,
-    adaptionSize,
+    // adaptionSize,
     vuePreset,
-    otherPreset
+    otherPreset,
   } = options;
 
   api.render('./../template', {

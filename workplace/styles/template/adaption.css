@@ -1,0 +1,12 @@
+html { font-size: <%= 10000 / adaptionSize %>vw; }
+html, body { margin: 0 auto; }
+
+@media only screen and (max-width: 320px) {
+  html { font-size: <%= 32000 / adaptionSize %>px; }
+  html, body { min-width: 320px; }
+}
+
+@media only screen and (min-width: 540px) {
+  html { font-size: <%= 54000 / adaptionSize %>px; }
+  html, body { max-width: 540px; }
+}

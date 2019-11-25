@@ -4,31 +4,23 @@
 
 ## prompts问答项
 
-### css预处理器
+### 选择css预处理器
 
-选择安装css预处理器，并通过[自动化导入文件](https://cli.vuejs.org/zh/guide/css.html#%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AF%BC%E5%85%A5)，导入常用功能样式（可pr），路径是styles/imports文件，即可在任意样式或vue文件使用。*推荐使用sass*。
+选择非css，则有通过[自动化导入文件](https://cli.vuejs.org/zh/guide/css.html#%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AF%BC%E5%85%A5)，导入常用工具样式（可pr），路径是styles/imports文件，即可在任意样式或vue文件使用。*推荐使用scss*。
 
-> 目前项目模板只提供了scss+rem的常用工具样式，其它的预处理器和对应vw适配方式的工具样式，没有，但是可加可pr，日后再慢慢更新。
+> TODO：目前项目模板只有scss + rem的本人常用工具样式，其它的预处理器的工具样式，日后慢慢补充。
 
-**reset样式：**
+**reset样式：**使用了`normalize.css`。
 
-1. 使用了`normalize.css`
-2. 预设的以下几个reset
+### 选择适配方案
 
-```css
-p { margin: 0; padding: 0; }
-img, video { object-fit: cover; }
-*:not(input) { user-select: none; }
-img[src=''], video[src=''] { display: none; }
-input { border: none; background-color: transparent; box-sizing: border-box; }
-button { border: none; background: none; padding: 0; display: flex; justify-content: center; align-items: center; }
-```
+提供的两种rem和vw两种适配方案，其中rem使用vw + rem方式，100 (设计图 px) = 1 (rem) 即可；vw使用`postcss-px-to-viewport`插件自动转换样式单位，配置好相关参数，直接使用设计图px，webpack自动转为vw。
 
-### 适配方案
+### 设计图分辨率
 
-选择设计图尺寸，提供的两种rem和vw两种适配方案，其中rem使用vw+rem方式，即设计图px / 100（rem）即可，vw使用`postcss-px-to-viewport`插件自动转换，配置好相关参数，直接使用设计图px，打包自动转为vw。目前有750和640设计图尺寸可选。
+有750px和640px设计图分辨率可选，亦可自定义输入。若没有使用css预处理器，`adaption-xxx.css`需要手动导入。
 
-**vw+rem方式下的750.css示例：**
+**vw + rem方式下的750px设计图示例：adaption-750.css**
 
 ```css
 html { font-size: 13.333333333333334vw; }

@@ -1,4 +1,3 @@
-/* keep */
-<%_ if(adaptionSize) { %>
-@import './<%= adaptionSize %>';
+<%_ if(adaptionType === 'rem') { %>
+@import './adaptio-<%= adaptionSize %>';
 <%_ } %>
