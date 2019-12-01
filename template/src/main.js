@@ -5,6 +5,10 @@ import { Toast } from 'vant'
 import { aget, apost } from '@/utils/request'
 import 'normalize.css'
 import '@/styles/index.<%= cssPreprocessor %>'
+<%_ if(cssPreprocessor === 'css') { %>
+import '@/styles/adaption-<%= adaptionSize %>.css'
+<%_ } %>
+
 
 FastClick.attach(document.body);
 Vue.config.productionTip = false;
