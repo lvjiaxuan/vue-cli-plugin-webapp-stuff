@@ -1,11 +1,16 @@
 {
-  "name": "vue-cli-plugin-h5-stuff",
+  "name": "@lvjiaxuan/vue-cli-plugin-h5-stuff",
   "version": "0.0.1",
   "description": "",
   "scripts": {},
   "author": "lvjiaxuan",
   "license": "MIT",
-  "repository": "",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "ejs-lint": "^0.3.0"
+  },
+  "repository": "https://github.com/lvjiaxuan/vue-cli-plugin-h5-stuff",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }
