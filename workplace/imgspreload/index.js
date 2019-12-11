@@ -4,7 +4,7 @@ module.exports = api => {
 
   api.extendPackage({
     dependencies: {
-      "vue-imgs-preload": "^0.1.2",
+      "vue-imgs-preload": "^0.1.3",
     }
   });
 }

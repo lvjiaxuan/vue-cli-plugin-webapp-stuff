@@ -32,7 +32,7 @@ module.exports = (api, options, rootOptions) => {
       axios: '^0.19.0',
       vant: '^2.1.4',
       fastclick: '^1.0.6',
-      qs: '^6.8.0'
+      qs: '^6.9.1'
     },
     devDependencies: {
       'cb-promisify': '^1.0.2',

@@ -5,7 +5,7 @@ module.exports = api => {
 
   api.extendPackage({
     dependencies: {
-      vuex: '^3.1.1'
+      vuex: '^3.1.2'
     }
   });
 
