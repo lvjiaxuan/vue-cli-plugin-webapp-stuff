@@ -44,7 +44,7 @@ module.exports = (api, options, rootOptions) => {
       'babel-plugin-import': '^1.12.0',
       fontmin: '^0.9.8',
       tinify: '^1.6.0-beta.2',
-      'webpack-cdn-plugin': '^3.1.4'
+      'hard-source-webpack-plugin': '^0.13.1'
     },
   });
 }

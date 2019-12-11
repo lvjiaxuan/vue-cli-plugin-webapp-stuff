@@ -93,20 +93,16 @@ module.exports = [
     }]
   },
 
-  // {
-  //   name: 'webpackVendor',
-  //   message: '请选择webpack优化方式',
-  //   type: 'list',
-  //   default: 'cdn',
-  //   choices: [
-  //     {
-  //       name: 'webpack-cdn-plugin',
-  //       value: 'cdn'
-  //     },
-  //     {
-  //       name: 'dll（需自行配置entry入口）',
-  //       value: 'dll'
-  //     }
-  //   ]
-  // }
+  {
+    name: 'betterWebpack',
+    message: '请选择webpack优化方式',
+    type: 'checkbox',
+    default: ['cdn', 'hard'],
+    choices: [
+      {
+        name: 'webpack-cdn-plugin',
+        value: 'cdn'
+      }
+    ]
+  }
 ]

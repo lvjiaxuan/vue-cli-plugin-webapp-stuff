@@ -56,17 +56,9 @@ module.exports = {
     })
     <%_ } %>
 
+    <%_ if(betterWebpack.includes('cdn')) { %>
     /**
-     * 依赖图分析
-     */
-    config.plugin('webpack-bundle').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [{
-      // analyzerMode: 'server',
-      analyzerMode: 'disabled',
-      openAnalyzer: false
-    }]);
-
-    /**
-     * cdn 优化
+     * 第三方库 cdn 优化
      */
     !isDevelopment && config.plugin('webpack-cdn').use('webpack-cdn-plugin', [{
       optimize: true,
@@ -80,6 +72,7 @@ module.exports = {
         path: 'dist/axios.min.js'
       }]
     }]);
+    <%_ } %>
 
     /**
      * **保持filenameHashing: false的img、media、fonts版本hash**

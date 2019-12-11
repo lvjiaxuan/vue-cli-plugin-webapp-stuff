@@ -66,13 +66,13 @@ module.exports = (api, options, rootOptions) => {
     cdnConfig,
   } = rootOptions.plugins[pluginName];
 
-  const adaptionSize = options.inputAdaptionSize ? options.inputAdaptionSize: options.adaptionSize;
   const {// prompts
     cssPreprocessor,
-    // adaptionSize,
     vuePreset,
     otherPreset,
+    betterWebpack
   } = options;
+  const adaptionSize = options.inputAdaptionSize ? options.inputAdaptionSize: options.adaptionSize;
 
   api.render('./../template', {
 
@@ -97,5 +97,6 @@ module.exports = (api, options, rootOptions) => {
     adaptionSize,
     vuePreset,
     otherPreset,
+    betterWebpack,
   });
 }

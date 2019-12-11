@@ -1,24 +1,9 @@
 module.exports = (api, options) => {
 
-  const webpackVendor = options.webpackVendor;
-
+  options.betterWebpack.includes('cdn') &&
   api.extendPackage({
     devDependencies: {
-      'webpack-cdn-plugin': '^3.1.1'
+      'webpack-cdn-plugin': '^1.0.18'
     }
   });
-
-  // if(webpackVendor === 'cdn') {
-  //   api.extendPackage({
-  //     devDependencies: {
-  //       'webpack-cdn-plugin': '^3.1.1'
-  //     }
-  //   });
-  // } else if(webpackVendor === 'dll') {
-  //   api.extendPackage({
-  //     scripts: {
-  //       dll: 'webpack -p --progress --config ./webpack.dll.conf.js'
-  //     }
-  //   });
-  // }
 }
