@@ -24,8 +24,8 @@ module.exports = (api, options) => {
         'sass-loader': '^7.1.0'
       },
       less: {
-        less: '^3.0.4',
-        'less-loader': '^4.1.0'
+        less: '^3.10.3',
+        'less-loader': '^5.0.0'
       },
       styl: {
         stylus: '^0.54.5',

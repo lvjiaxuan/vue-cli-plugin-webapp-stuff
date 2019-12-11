@@ -97,7 +97,7 @@ module.exports = [
     name: 'betterWebpack',
     message: '请选择webpack优化方式',
     type: 'checkbox',
-    default: ['cdn', 'hard'],
+    default: ['cdn'],
     choices: [
       {
         name: 'webpack-cdn-plugin',

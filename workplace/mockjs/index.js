@@ -6,9 +6,9 @@ module.exports = api => {
 
   api.extendPackage({
     devDependencies: {
-      '@babel/register': '^7.5.5',
-      mockjs: '^1.0.1-beta3',
-      chokidar: '^3.0.2'
+      '@babel/register': '^7.7.4',
+      mockjs: '^1.1.0',
+      chokidar: '^3.3.0'
     }
   });
 }

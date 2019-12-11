@@ -1,19 +1,11 @@
 const gulp = require('gulp');
 const GulpSSH = require('gulp-ssh');
-const promisify = require('cb-promisify');
 const fs = require('fs');
 const path = require('path');
 const tinify = require('tinify');
 const imgmin = require('gulp-tiny-imgmin');
 
 const resolve = dir => path.join(__dirname, dir);
-const fsreaddir = promisify(fs.readdir);
-const fsreadFile = promisify(fs.readFile);
-const fswriteFile = promisify(fs.writeFile);
-const fsstat = promisify(fs.stat);
-const fsunlink = promisify(fs.unlink);
-const fsrename = promisify(fs.rename);
-const fsaccess = promisify(fs.access);
 
 // ====================================================================================
 // ====================================================================================

@@ -2,11 +2,20 @@
 
 > 基于vue-cli3插件开发，集成H5常见业务
 
+## 安装
+
+**项目已创建**：`vue add h5-stuff`。
+
+**项目未创建**：
+
+1. 拷贝preset模板到本地，[模板](./peset.json)，[preset项说明](./PRESET.md)
+2. 创建：`vue create --preset preset.json my-project`
+
 ## prompts问答项
 
 ### 选择css预处理器
 
-选择非css，则有通过[自动化导入文件](https://cli.vuejs.org/zh/guide/css.html#%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AF%BC%E5%85%A5)，导入常用工具样式（可pr），路径是styles/imports文件，即可在任意样式或vue文件使用。*推荐使用scss*。
+若选择非css，则有通过[自动化导入文件](https://cli.vuejs.org/zh/guide/css.html#%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AF%BC%E5%85%A5)，导入常用工具样式（可pr），路径是styles/imports文件，即可在任意样式或vue文件使用。*推荐使用scss*。
 
 > TODO：目前项目模板只有scss + rem的本人常用工具样式，其它的预处理器的工具样式，日后慢慢补充。
 
@@ -16,9 +25,11 @@
 
 提供的两种rem和vw两种适配方案，其中rem使用vw + rem方式，100 (设计图 px) = 1 (rem) 即可；vw使用`postcss-px-to-viewport`插件自动转换样式单位，配置好相关参数，直接使用设计图px，webpack自动转为vw。
 
+> 其中rem设置有最大布局视口的样式，vw没有。
+
 ### 设计图分辨率
 
-有750px和640px设计图分辨率可选，亦可自定义输入。若没有使用css预处理器，`adaption-xxx.css`需要手动导入。
+有750px和640px设计图分辨率可选，亦可选择输入。
 
 **vw + rem方式下的750px设计图示例：adaption-750.css**
 
@@ -73,7 +84,7 @@ export default ({
 }
 ```
 
-#### mock-server
+#### mockjs
 
 生成：
 
@@ -85,33 +96,17 @@ export default ({
 
 #### 图片预加载组件
 
+**图片预加载组件：**
+
+[vue-imgs-preload](https://github.com/lvjiaxuan/vue-imgs-preload)
+
 **`imgs.json`说明：**
 
-图片名称数组。
+图片名称数组，用于配合图片预加载组件使用。当添加往`src/assets/images/`目录添加图片，会自动进行压缩，imgs.json会刷新。
 
-**使用说明：**
+#### webpack-cdn-plugin
 
-有时候预加载除了图片因素之外，异步接口的返回也可能是因素之一。此时可以使用`:add-conditions-num`说明有多少因素（相当于多一张图片），示例代码如下：
-
-```vue
-<imgs-preload ref="imgs-preload" :imgs="require('@/assets/imgs.json')" :preload-visible.sync="preloadVisible" :add-conditions-num="1">
-  <template #default="{ imgsPercentage }">{{ imgsPercentage }}</template>
-</imgs-preload>
-
-// ...
-
-created() {
-  this.init();
-},
-methods: {
-  init() {
-    this.$request('/url').then(() => {
-      // ...
-      this.$refs['imgs-preload'].imgsLoaded++;
-    });
-  }
-}
-```
+[webpack-cdn-plugin](https://github.com/shirotech/webpack-cdn-plugin)：第三方库使用cdn加载。目前默认选择的库有vue、axios，可在`vue.config.js·`自行更改相关配置。
 
 ## axios请求封装
 
@@ -134,22 +129,11 @@ data = {
 - 响应拦截器了所有`+retCode !== 0`的请求及处理其它请求错误（如Error: timeout），并把msg，Toast（vant）出来
 - 使用post请求默认使用qs表单提交，相关字段`isqs`
 
-**到出的方法：**
-
-```js
-export const aget = ({ url = '', params = {}, opts = {} } = {}) => service.get(url, Object.assign({}, { params }, opts));
-export const apost = ({ url = '', data = {}, params = {}, opts = {}, isqs = true } = {}) => {
-
-  isqs && Object.assign(opts, { transformRequest: [data => Qs.stringify(data)] });
-  return service.post(url, data, Object.assign({}, { params }, opts));
-}
-```
-
 ## gulpfile.js
 
 ### 自动发版
 
->  提供打包后自动上传代码到服务器的gulp任务。
+>  提供打包后自动上传代码到服务器的gulp任务。*按照之前部门发版习惯封装*。
 
 - 初始的服务器信息配置来自创建项目时的preset
 - `gulp deploysit`：测试环境，上传cdn，上传index.html文件
@@ -157,7 +141,7 @@ export const apost = ({ url = '', data = {}, params = {}, opts = {}, isqs = true
 
 **打包命令：**
 
-> `使用--report`会生成report.html以帮助分析包内容
+> 使用了`--report`会生成report.html以帮助分析包内容
 
 ```json
 "scripts": {
@@ -189,28 +173,7 @@ export const apost = ({ url = '', data = {}, params = {}, opts = {}, isqs = true
 
 ## webpack打包优化
 
-为了提高构建速度和减少构建后的文件体积，目前使用的方式是cdn优化打包（[webpack-cdn-plugin](https://github.com/shirotech/webpack-cdn-plugin)）。
-
-```js
-// vue.config.js
-
-module.exports = {
-  // ...
-  config.plugin('webpack-cdn').use('webpack-cdn-plugin', [{
-    optimize: true,
-    prodUrl: 'https://cdn.jsdelivr.net/npm/:name@:version/:path',
-    modules: [{
-      name: 'vue',
-      var: 'Vue',
-      path: 'dist/vue.runtime.min.js'
-    }, {
-      name: 'axios',
-      path: 'dist/axios.min.js'
-    }]
-  }]);
-	// ...
-})
-```
+[hard-source-webpack-plugin](https://github.com/mzgoddard/hard-source-webpack-plugin)：DLL已被webpack4“优化”掉了，这是更好的DLL，webpack5可能会自带实现。
 
 ## 其它预装库
 

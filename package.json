@@ -1,11 +1,10 @@
 {
   "name": "@lvjiaxuan/vue-cli-plugin-h5-stuff",
   "version": "0.0.1",
-  "description": "",
+  "description": ["vue-cli-plugin"],
   "scripts": {},
   "author": "lvjiaxuan",
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
     "ejs-lint": "^0.3.0"
   },

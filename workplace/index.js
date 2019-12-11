@@ -30,21 +30,20 @@ module.exports = (api, options, rootOptions) => {
     },
     dependencies: {
       axios: '^0.19.0',
-      vant: '^2.1.4',
+      vant: '^2.2.16',
       fastclick: '^1.0.6',
       qs: '^6.9.1'
     },
     devDependencies: {
-      'cb-promisify': '^1.0.2',
       gulp: '^4.0.2',
       'gulp-ssh': '^0.7.0',
       vconsole: '^3.3.4',
       tinify: '^1.6.0-beta.2',
-      'gulp-rename': '^1.4.0',
       'babel-plugin-import': '^1.12.0',
       fontmin: '^0.9.8',
       tinify: '^1.6.0-beta.2',
-      'hard-source-webpack-plugin': '^0.13.1'
+      'hard-source-webpack-plugin': '^0.13.1',
+      'gulp-tiny-imgmin': '^1.0.4'
     },
   });
 }

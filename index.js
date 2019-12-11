@@ -4,7 +4,7 @@ module.exports = (api, projectOptions) => {
 
   api.chainWebpack(config => {
 
-    config.plugin('hard-source-webpack').use(require('hard-source-webpack-plugin'));
+    // config.plugin('hard-source-webpack').use('hard-source-webpack-plugin');
 
     config.plugin('html').tap(args => {
       args[0].meta = Object.assign({
@@ -33,5 +33,31 @@ module.exports = (api, projectOptions) => {
 
       return args;
     });
+
+    if(!pluginOptions.isIndexHtml) {
+      // img
+      config.module.rule('images').use('url-loader').tap(options => {
+        options.fallback.options.name = 'img/[name].[hash:8].[ext]';
+        return options;
+      });
+
+      // svg
+      config.module.rule('svg').use('file-loader').tap(options => {
+        options.name = 'img/[name].[hash:8].[ext]';
+        return options;
+      });
+
+      // media
+      config.module.rule('media').use('url-loader').tap(options => {
+        options.fallback.options.name = 'media/[name].[hash:8].[ext]'
+        return options;
+      });
+
+      // fonts
+      config.module.rule('fonts').use('url-loader').tap(options => {
+        options.fallback.options.name = 'fonts/[name].[hash:8].[ext]'
+        return options;
+      });
+    }
   });
 }

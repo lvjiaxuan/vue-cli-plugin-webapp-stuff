@@ -25,7 +25,7 @@
 
 <script>
 <%_ if(imgspreload) { _%>
-import ImgsPreload from './components/ImgsPreload'
+import ImgsPreload from 'vue-imgs-preload'
 
 export default {
 

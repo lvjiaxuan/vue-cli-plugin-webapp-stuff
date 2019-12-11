@@ -1,8 +1,5 @@
 module.exports = (api, options, rootOptions) => {
 
-  console.log('\n[generator options]：\n', options);
-  console.log('\n[generator rootOptions]：\n', rootOptions);
-
   /**
    * 基本模板
    */
@@ -14,9 +11,9 @@ module.exports = (api, options, rootOptions) => {
   require('./workplace/styles')(api, options);
 
   /**
-   * webpackVendor处理
+   * webpack构建优化处理
    */
-  // require('./workplace/webpack')(api, options);
+  require('./workplace/webpack')(api, options);
 
   /**
    * vue 周边常用
