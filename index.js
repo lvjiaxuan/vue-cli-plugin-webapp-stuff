@@ -1,12 +1,12 @@
 module.exports = (api, projectOptions) => {
 
-  const { pluginOptions } = projectOptions;
+  const pluginOptions = projectOptions.pluginOptions || {} ;
 
-  api.chainWebpack(webpackConfig => {
+  api.chainWebpack(config => {
 
-    // 通过 webpack-chain 修改 webpack 配置
-    webpackConfig.plugin('html').tap(args => {
-      args[0].title = JSON.stringify(pluginOptions);
+    config.plugin('hard-source-webpack').use(require('hard-source-webpack-plugin'));
+
+    config.plugin('html').tap(args => {
       args[0].meta = Object.assign({
         viewport: 'width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no',
         'X-UA-Compatible': {
@@ -16,10 +16,10 @@ module.exports = (api, projectOptions) => {
         'utf-8': {
           'charset': 'utf-8'
         },
-      }, !pluginOptions.nonMetaCache ? {
+      }, pluginOptions.useMetaCacheControl ? {
         'Cache-Control': {
           'http-equiv': 'Cache-Control',
-          'content': 'no-cache, no-store, must-revalidate'
+          'content': 'no-cache, no-store'
         },
         'Pragma': {
           'http-equiv': 'Pragma',
@@ -34,13 +34,4 @@ module.exports = (api, projectOptions) => {
       return args;
     });
   });
-
-//   api.configureWebpack(webpackConfig => {
-//     // 修改 webpack 配置
-//     // 或返回通过 webpack-merge 合并的配置对象
-//   });
-  
-//   api.registerCommand('test', args => {
-//     // 注册 `vue-cli-service test`
-//   });
 }
