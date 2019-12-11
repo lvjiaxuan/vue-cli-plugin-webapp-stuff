@@ -1,6 +1,7 @@
 # preset说明
 
 > `isSeparation`：若不是前后端分离，则忽略`ServiceUrl`
+> 
 > `isIndexHtml`：若是使用jsp，资源版本号则使用el表达式控制
 
 ```json

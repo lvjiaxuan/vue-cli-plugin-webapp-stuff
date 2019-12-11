@@ -4,11 +4,11 @@
 
 ## 安装
 
-**项目已创建**：`vue add h5-stuff`。
+**项目已创建**：`vue add webapp-stuff`。
 
 **项目未创建**：
 
-1. 拷贝preset模板到本地，[模板](./peset.json)，[preset项说明](./PRESET.md)
+1. 拷贝preset模板到本地，[模板](./preset.json)，[preset项说明](./PRESET.md)
 2. 创建：`vue create --preset preset.json my-project`
 
 ## prompts问答项

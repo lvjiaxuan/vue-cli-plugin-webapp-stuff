@@ -1,15 +1,16 @@
 {
-  "name": "@lvjiaxuan/vue-cli-plugin-h5-stuff",
+  "name": "vue-cli-plugin-webapp-stuff",
   "version": "0.0.1",
-  "description": ["vue-cli-plugin"],
+  "description": "vue-cli-plugin-webapp-stuff",
+  "keywords": ["vue-cli-plugin"],
   "scripts": {},
   "author": "lvjiaxuan",
   "license": "MIT",
   "devDependencies": {
     "ejs-lint": "^0.3.0"
   },
-  "repository": "https://github.com/lvjiaxuan/vue-cli-plugin-h5-stuff",
+  "repository": "https://github.com/lvjiaxuan/vue-cli-plugin-webapp-stuff",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org/"
   }
 }
