@@ -9,10 +9,29 @@
   "author": "lvjiaxuan",
   "license": "MIT",
   "devDependencies": {
-    "ejs-lint": "^0.3.0"
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "cz-conventional-changelog": "^3.0.2",
+    "ejs-lint": "^0.3.0",
+    "husky": "^4.0.10"
   },
   "repository": "https://github.com/lvjiaxuan/vue-cli-plugin-webapp-stuff",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
