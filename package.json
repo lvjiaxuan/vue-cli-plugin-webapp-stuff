@@ -2,7 +2,9 @@
   "name": "vue-cli-plugin-webapp-stuff",
   "version": "0.0.1",
   "description": "vue-cli-plugin-webapp-stuff",
-  "keywords": ["vue-cli-plugin"],
+  "keywords": [
+    "vue-cli-plugin"
+  ],
   "scripts": {},
   "author": "lvjiaxuan",
   "license": "MIT",
