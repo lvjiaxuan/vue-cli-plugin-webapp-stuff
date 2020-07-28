@@ -1,18 +1,21 @@
 {
   "name": "vue-cli-plugin-webapp-stuff",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "vue-cli-plugin-webapp-stuff",
   "keywords": [
     "vue-cli-plugin"
   ],
-  "scripts": {},
+  "scripts": {
+    "release": "standard-version"
+  },
   "author": "lvjiaxuan",
   "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^9.1.1",
     "@commitlint/config-conventional": "^9.1.1",
     "cz-conventional-changelog": "^3.2.0",
-    "husky": "^4.2.5"
+    "husky": "^4.2.5",
+    "standard-version": "^8.0.2"
   },
   "repository": "https://github.com/lvjiaxuan/vue-cli-plugin-webapp-stuff",
   "publishConfig": {
