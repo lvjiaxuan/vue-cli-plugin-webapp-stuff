@@ -5,7 +5,7 @@ module.exports = (api, options, rootOptions) => {
   /**
    * 来自 preset.json
    */
-  const defaultSetting = {
+  const defaultPreset = {
     [pluginName]: {
       tinifyKey: 'tinifyKey',
       ticketUrl: 'ticketUrl',
@@ -47,9 +47,9 @@ module.exports = (api, options, rootOptions) => {
   }
 
   if(!rootOptions.plugins) {
-    rootOptions.plugins = defaultSetting;
+    rootOptions.plugins = defaultPreset;
   } else {
-    rootOptions.plugins = Object.assign({ ...defaultSetting }, rootOptions.plugins);
+    rootOptions.plugins = Object.assign({ ...defaultPreset }, rootOptions.plugins);
   }
 
   const {// preset
